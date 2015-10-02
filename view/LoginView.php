@@ -86,6 +86,12 @@ class LoginView {
 			</form>
 		';
 	}
+	
+	
+
+	
+
+	
 	public function isPosted()
 	{
 		
