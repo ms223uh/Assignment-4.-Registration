@@ -67,7 +67,7 @@ class LoginModel {
         
         else
         {
-            $message = "Wrong name or password";
+            $message = "Wrong name or password.";
         }
         
         $this->message = $message;
