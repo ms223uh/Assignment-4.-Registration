@@ -35,9 +35,6 @@ class LoginView {
 		else
 		{
 			$response = $this->generateLoginFormHTML($message);
-			
-			
-			
 		}
 		
 		
@@ -66,7 +63,8 @@ class LoginView {
 	* @return  void, BUT writes to standard output!
 	*/
 	private function generateLoginFormHTML($message) {
-		return '
+		return $this->renderIsLoggedIn() . '
+			<a href="?register">Register here</a>
 			<form method="post" > 
 				<fieldset>
 					<legend>Login - enter Username and password</legend>
@@ -88,6 +86,15 @@ class LoginView {
 	}
 	
 	
+	private function renderIsLoggedIn() {
+		$isLoggedIn = $this->loginModel->isLoggedin();
+		if ($isLoggedIn) {
+		  return '<h2>Logged in</h2>';
+		}
+		else {
+		  return '<h2>Not logged in</h2>';
+		}
+	}
 
 	
 

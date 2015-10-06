@@ -6,6 +6,7 @@ require_once('view/LayoutView.php');
 require_once('view/RegisterView.php');
 
 require_once('model/LoginModel.php');
+require_once('model/RegisterModel.php');
 
 require_once('controller/LoginController.php');
 require_once('controller/RegisterController.php');
@@ -16,10 +17,7 @@ class MasterController{
     
     public function __construct(){
         
-       
-        //$rc = new RegisterController();
-        
-        
+
                 $uri = $_SERVER["REQUEST_URI"];
                 $uri = explode("?",$uri);
                 
@@ -27,7 +25,13 @@ class MasterController{
                 
                     if (count($uri) > 1 && $uri[1] == "register")
                     {
-                       $rv = new RegisterView();
+                        $rm = new RegisterModel();
+                        $lv = new LayoutView();
+                        $dtv = new DateTimeView();
+                        
+                        $rv = new RegisterView($rm);
+                        $lv->render($rv,$dtv);
+                       
                     }
                         else
                         {
@@ -40,16 +44,12 @@ class MasterController{
                                 
                                 $lc = new LoginController($v, $lm);
                                 
-                                $lv->render($lm->isLoggedin(), $v, $dtv);
+                                $lv->render($v, $dtv);
                         }
                 
                 
                 
         }
-    
-    
-
-    
     
 
 }

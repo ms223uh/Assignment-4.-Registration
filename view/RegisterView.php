@@ -2,25 +2,34 @@
 
 
 class RegisterView {
-	private static $name = 'RegisterView::UserName';
-	private static $password = 'RegisterView::Password';
-	private static $messageId = 'RegisterView::Message';
 
+		public function __construct(RegisterModel $regModel){
+		$this->regModel = $regModel;
+		}
 
-	
-		private function generateRegisterFormHTML($message) {
+		 
+		public function response() {
+
+			return $this->generateRegisterFormHTML();
+		}
+		
+		public function generateRegisterFormHTML() {
 		return '
-			<form method="post" > 
+			<a href="/">Take me back to login</a>
+			<form method="post"> 
 				<fieldset>
 					<legend>Register User</legend>
-					<p id="">' . $message . '</p>
-					
-					<label for="' . self::$name . '">Username :</label>
-					<input type="text" id="" name="" value="" />
-
-					<label for="' . self::$password . '">Password :</label>
-					<input type="password" id="" name="" />
-
+				
+			<br>				
+			<br>		
+					<label>Username :</label>
+					<input type="text" id="" name="UserName" value="" />
+			<br>				
+			<br>
+					<label>Password :</label>
+					<input type="password" id="" name="Password" value=""/>
+			<br>				
+			<br>
 					<input type="submit" name="" value="Register" />
 					
 				</fieldset>
