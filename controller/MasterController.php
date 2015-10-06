@@ -3,6 +3,7 @@
 require_once('view/LoginView.php');
 require_once('view/DateTimeView.php');
 require_once('view/LayoutView.php');
+require_once('view/RegisterView.php');
 
 require_once('model/LoginModel.php');
 
@@ -26,7 +27,7 @@ class MasterController{
                 
                     if (count($uri) > 1 && $uri[1] == "register")
                     {
-                       echo "register";
+                       $rv = new RegisterView();
                     }
                         else
                         {
