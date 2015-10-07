@@ -8,6 +8,7 @@ require_once('view/RegisterView.php');
 require_once('model/RegisterModel.php');
 require_once('model/LoginModel.php');
 require_once('model/User.php');
+require_once('model/RegisterDAL.php');
 
 require_once('controller/LoginController.php');
 require_once('controller/RegisterController.php');
@@ -26,9 +27,11 @@ class MasterController{
                 
                     if (count($uri) > 1 && $uri[1] == "register")
                     {
-                        $rm = new RegisterModel();
+                        $rd = new RegisterDAL();
+                        $rm = new RegisterModel($rd);
                         $lv = new LayoutView();
                         $dtv = new DateTimeView();
+                        
                         
                         $rv = new RegisterView($rm);
                         $lv->render($rv,$dtv);
@@ -36,9 +39,9 @@ class MasterController{
                     }
                         else
                         {
-                                $lm = new LoginModel();
+                                $rd = new RegisterDAL();
+                                $lm = new LoginModel($rd);
                                 
-                                //CREATE OBJECTS OF THE VIEWS
                                 $v = new LoginView($lm);
                                 $dtv = new DateTimeView();
                                 $lv = new LayoutView();

@@ -19,9 +19,10 @@ class RegisterDAL
                 file_put_contents(self::$DB, $this->serialized);
             }
             
+            
             public function getUser()
             {
-               
+               return unserialize(file_get_contents(self::$DB));
             }
     
     

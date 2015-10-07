@@ -38,8 +38,6 @@ class RegisterModel
                     }
                 
                 
-                
-                
-                //SEND IT BACK TO CONTROLLER
+            
             }
 }

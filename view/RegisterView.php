@@ -52,20 +52,29 @@ class RegisterView {
 	}
 	
 	
+	public function userWannaRegister(){
+		
+		if (isset($_POST[$this->register])) { 
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 	public function getUserName()
 	{
-		return [self::$name];
+		return $_POST[self::$name];
 	}
 	
 	public function getPassword()
 	{
-		return [self::$password];
+		return $_POST[self::$password];
 	}
 	
 	public function getrepeatPassword()
 	{
-		return [self::$repeatpassword];
+		return $_POST[self::$repeatpassword];
 	}
 	
 

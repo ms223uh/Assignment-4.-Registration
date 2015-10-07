@@ -17,16 +17,9 @@ class RegisterController{
     
     public function init()
     {
-        
-       $this->regModel->newUser($this->regView->getUserName(), $this->regView->getPassword(), $this->regView->getrepeatPassword());
-        
-        
-        
-        //TA EMOT ETT USEROBJEKT IFRÅN REGISTERMODEL
-        
-        //SKICKA TILL REGISTERDAL
-        
-        //HEADER LOCATION TILL ?.
+        if($this->regView->userWannaRegister){
+                $this->regModel->newUser($this->regView->getUserName(), $this->regView->getPassword(), $this->regView->getrepeatPassword());
+        }
         
     }
     
