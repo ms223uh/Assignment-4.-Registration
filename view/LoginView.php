@@ -23,6 +23,7 @@ class LoginView {
 	 */
 	 
 	 
+	 
 	public function response() {
 		$message = $this->loginModel->responseModel();
 		
