@@ -3,8 +3,8 @@
 class User {
     
     
-    public $UserName;
-    public $Password;
+    private $UserName;
+    private $Password;
     
     public function __construct($UserName, $Password){
         $this->UserName = $UserName;
@@ -12,7 +12,15 @@ class User {
         
     }
     
+    public function getUserName(){
+        
+        return $this->UserName;
+    }
     
+    public function getPassword(){
+        
+        return $this->Password;
+    }
     
     
 }

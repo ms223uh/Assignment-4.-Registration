@@ -38,7 +38,7 @@ class RegisterModel
                     }
                 
                 
-                $users = array();
+                
                 
                 //SEND IT BACK TO CONTROLLER
             }
