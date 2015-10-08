@@ -24,7 +24,7 @@ class RegisterView {
 		
 		public function generateRegisterFormHTML() {
 		return '
-			<a href="/">Back to login</a>
+			<a href="?login">Back to login</a>
 			<form method="post"> 
 				<fieldset>
 					<legend>Register User</legend>

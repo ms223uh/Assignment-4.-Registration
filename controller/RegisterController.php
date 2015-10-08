@@ -24,7 +24,7 @@ class RegisterController{
                 if ($this->regModel->newUser($this->regView->getUserName(), $this->regView->getPassword(), $this->regView->getrepeatPassword()))
                 {
                     $_SESSION["newuser"] = $this->registerDAL->addUser($this->regView->getUserName(),$this->regView->getPassword());
-                    header("location: ");
+                    header("location: ?login");
                 }
         }
         
