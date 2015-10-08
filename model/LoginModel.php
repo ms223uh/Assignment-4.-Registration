@@ -17,60 +17,52 @@ class LoginModel {
         
         $log = false;
         $this->loggedIn = $log;
-
         
+        $dal = new UserDAL();
+
+        /*
         
         if($this->name == $inputName && $this->password == $inputPassword)
         {
-            
-             $message = "Welcome";
-            
-            if(isset($_SESSION["name"]) && isset($_SESSION["password"])){
-
-                unset($_SESSION["name"]);
-                unset($_SESSION["password"]);
-                $message = "";
-
-        }
-            
-        
-            $_SESSION["name"] = $inputName;
-            $_SESSION["password"] = $inputPassword;
-            
-           
-    
             $log = true;
             $this->loggedIn = $log;
  
         }
-        
-        else if($inputName == "")
+        */
+        if($inputName == "")
         {
             
-            $message = "Username is missing";
+            $this->message = "Username is missing";
+            return false;
             
         }
         
         else if($inputPassword == "")
         {
             
-            $message = "Password is missing";
+            $this->message = "Password is missing";
+            return false;
             
         }
         
-        else if($this->name == $inputName && $inputPassword == "")
+        $user = $dal->getUser($inputName);
+        
+        if($user != null && $user->getPassword() == $inputPassword)
         {
-            
-            $message = "Admin";
-            
+            $this->message = "Welcome";
+            if(isset($_SESSION["user"])){
+                $this->message = "";
+            }
+            $_SESSION["user"] = $user;
+            return true;
         }
         
         else
         {
-            $message = "Wrong name or password";
+            $this->message = "Wrong name or password";
         }
         
-        $this->message = $message;
+        return false;
 
     } 
     
@@ -85,7 +77,7 @@ class LoginModel {
     
     public function isLoggedin()
     {
-        if(isset($_SESSION["name"]) && isset($_SESSION["password"]))
+        if(isset($_SESSION["user"]))
         {
             return $this->loggedIn = true;
         }
@@ -96,12 +88,11 @@ class LoginModel {
     }
     
     public function logout(){
-        if(isset($_SESSION["name"]) && isset($_SESSION["password"])){
+        if(isset($_SESSION["user"])){
         $this->message = "Bye bye!";
         }
         
-        unset($_SESSION["name"]);
-        unset($_SESSION["password"]);
+        unset($_SESSION["user"]);
         
     }
     

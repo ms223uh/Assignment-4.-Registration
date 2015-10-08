@@ -23,11 +23,15 @@ class LoginController {
             $this->model->checkLogin($this->view->getUserName(), $this->view->getPassword());
       
         }
-        if($this->view->logout()){
-            $this->model->logout();
+        else
+        {
+            $this->view->isNewUser();
             
+            if($this->view->logout()){
+                $this->model->logout();
+                
+            }
         }
-        
         
         
     }

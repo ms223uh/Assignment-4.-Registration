@@ -5,13 +5,15 @@ class RegisterView {
 	
 		private static $name = 'RegisterView::UserName';
 		private static $password = 'RegisterView::Password';
-		private static $repeatpassword = 'RegisterView::$RepeatPassword';
-		private static $register = 'RegisterView::$Register';
+		private static $repeatpassword = 'RegisterView::PasswordRepeat';
+		private static $register = 'RegisterView::Register';
+		private static $message = 'RegisterView::Message';
+		private static $savedName = '';
 		
 	
 
 		public function __construct(RegisterModel $regModel){
-		$this->regModel = $regModel;
+			$this->regModel = $regModel;
 		}
 
 		 
@@ -22,26 +24,26 @@ class RegisterView {
 		
 		public function generateRegisterFormHTML() {
 		return '
-			<a href="/">Take me back to login</a>
+			<a href="/">Back to login</a>
 			<form method="post"> 
 				<fieldset>
 					<legend>Register User</legend>
-				
+				<p id="'.self::$message.'">'.$this->regModel->getMessage().'</p>
 			<br>				
 			<br>		
 					<label>Username :</label>
-					<input type="text" id=" ' . self::$name . ' " name=" ' . self::$name . ' " value="" />
+					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="'.self::$savedName.'" />
 			<br>				
 			<br>
 					<label>Password :</label>
-					<input type="password" id=" ' . self::$password . ' " name=" ' . self::$password . ' " value=""/>
+					<input type="password" id="' . self::$password . '" name="' . self::$password . '" value=""/>
 			<br>				
 			<br>
 					<label>Repeat Password :</label>
-					<input type="password" id=" ' . self::$repeatpassword . ' " name=" ' . self::$repeatpassword . ' " value=""/>
+					<input type="password" id="' . self::$repeatpassword . '" name="' . self::$repeatpassword . '" value=""/>
 			<br>				
 			<br>
-					<input type="submit" name=" ' . self::$register . ' " value="Register" />
+					<input type="submit" name="' . self::$register . '" value="Register" />
 			<br>
 			<br>
 					
@@ -54,7 +56,9 @@ class RegisterView {
 	
 	public function userWannaRegister(){
 		
-		if (isset($_POST[$this->register])) { 
+		if (isset($_POST[self::$register])) { 
+			
+			self::$savedName = preg_replace("/<\w+>|<\/\w+>|[^A-Za-z0-9]/",'',$_POST[self::$name]);
 			return true;
 		}
 		return false;
