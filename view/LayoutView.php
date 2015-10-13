@@ -2,28 +2,7 @@
 
 
 class LayoutView {
-  /*
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
-    echo '<!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <title>Login Example</title>
-        </head>
-        <body>
-          <h1>Assignment 2</h1>
-          ' . $this->renderIsLoggedIn($isLoggedIn) . '
-          
-          <div class="container">
-              ' . $v->response() . '
-              
-              ' . $dtv->show() . '
-          </div>
-         </body>
-      </html>
-    ';
-  }
-  */
+
   
   public function render($view, DateTimeView $dtv)
   {
@@ -31,14 +10,14 @@ class LayoutView {
       <html>
         <head>
           <meta charset="utf-8">
-          <title>Login Example</title>
+          <title>Shopping-List</title>
         </head>
         <body>
-          <h1>Assignment 2</h1>
+          <h1>Shopping-List</h1>
           
           <div class="container">
               ' . $view->response() . '
-              ' . $dtv->show() . '
+            
           </div>
          </body>
       </html>

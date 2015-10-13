@@ -14,16 +14,7 @@ class LoginView {
 		$this->loginModel = $loginModel;
 	}
 
-	/**
-	 * Create HTTP response
-	 *
-	 * Should be called after a login attempt has been determined
-	 *
-	 * @return  void BUT writes to standard output and cookies!
-	 */
-	 
-	 
-	 
+
 	public function response() {
 		$message = $this->loginModel->responseModel();
 		
@@ -41,14 +32,7 @@ class LoginView {
 		
 		return $response;
 	}
-	
 
-	
-	/**
-	* Generate HTML code on the output buffer for the logout button
-	* @param $message, String output message
-	* @return  void, BUT writes to standard output!
-	*/
 	private function generateLogoutButtonHTML($message) {
 		return $this->renderIsLoggedIn() . '
 			<form  method="post" >
@@ -57,12 +41,7 @@ class LoginView {
 			</form>
 		';
 	}
-	
-	/**
-	* Generate HTML code on the output buffer for the logout button
-	* @param $message, String output message
-	* @return  void, BUT writes to standard output!
-	*/
+
 	private function generateLoginFormHTML($message) {
 		return $this->renderIsLoggedIn() . '
 			<a href="?register=1">Register a new user</a>
@@ -93,7 +72,7 @@ class LoginView {
 		  return '<h2>Logged in</h2>';
 		}
 		else {
-		  return '<h2>Not logged in</h2>';
+		  return ;
 		}
 	}
 
